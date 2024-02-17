@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Title from "./components/Title";
+import ContactList from "./components/contactList";
+import { getContacts } from "./components/db";
 
 function App() {
+  const [showContact, setShowContact] = useState(true);
+  const dbContacts = getContacts();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title text={"Phone Book"} classes={"title"} />
+      <main>
+        <Title text={"Display Contacts"} classes={"title main-title"} />
+        {showContact && <ContactList contacts={dbContacts} />}
+      </main>
     </div>
   );
 }
