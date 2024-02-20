@@ -8,6 +8,7 @@ import SearchFilter from "./components/searchFilter";
 function App() {
   const [showContact, setShowContact] = useState(false);
   const [sortAZ, setSortAz] = useState(true);
+  const [searchContact, setSearchContact] = useState("");
   const dbContacts = getContacts();
   const toggleButtonClick = () => {
     showContact ? setShowContact(false) : setShowContact(true);
@@ -22,19 +23,29 @@ function App() {
         <SearchFilter
           toggleButtonClick={toggleButtonClick}
           toggleSortAZ={toggleSortAZ}
+          handleSearchContact={setSearchContact}
         />
         <Title text={"Display Contacts"} classes={"title main-title"} />
         {showContact && (
           <ContactList
-            contacts={
-              sortAZ
-                ? dbContacts.sort((a, b) =>
-                    a.first_name.localeCompare(b.first_name)
-                  )
-                : dbContacts.sort((a, b) =>
-                    b.first_name.localeCompare(a.first_name)
-                  )
-            }
+            contacts={(sortAZ
+              ? dbContacts.sort((a, b) =>
+                  a.first_name.localeCompare(b.first_name)
+                )
+              : dbContacts.sort((a, b) =>
+                  b.first_name.localeCompare(a.first_name)
+                )
+            ).filter((contact) => {
+              if (searchContact === "") {
+                return contact;
+              } else if (
+                contact.first_name.toLocaleLowerCase().includes(
+                  searchContact.toLowerCase()
+                )
+              ) {
+                return contact;
+              }
+            })}
           />
         )}
       </main>
