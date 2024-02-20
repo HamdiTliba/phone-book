@@ -12,6 +12,7 @@ export function getContacts() {
   for (let i = 0; i < 1000; i++) {
     let newContact = { ...contacts[0] };
     newContact.id = i + 1;
+
     newContacts.push(newContact);
   }
   return newContacts;

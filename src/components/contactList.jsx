@@ -46,7 +46,7 @@ const ContactList = ({ contacts }) => {
             firstName={contact.first_name}
             lastname={contact.last_name}
             phoneNumber={contact.phone}
-            altImg={""}
+            altImg={contact.first_name}
           />
         );
       })}

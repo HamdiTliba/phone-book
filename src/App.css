@@ -40,8 +40,26 @@ main {
   margin: 20px;
   border-radius: 10px;
   border: 4px solid rgb(116, 116, 116);
-  overflow: auto;
+  overflow: scroll;
+  overflow-x: hidden;
 }
+/* main::-webkit-scrollbar {
+  display: none !important;
+} */
+::-webkit-scrollbar {
+  width: 8px;
+
+  /* background: #c2c2c2; */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(135, 134, 172);
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(91, 90, 123);
+}
+
 .main-title {
   color: white;
   font-size: 38px;
@@ -72,4 +90,24 @@ img {
   font-size: 5px;
   width: 40px;
   height: 40px;
+}
+button {
+  background-color: lightblue;
+  padding: 4px;
+  border: none;
+  border-radius: 2px;
+  margin: 0px 5px;
+  cursor: pointer;
+}
+input {
+  outline: none;
+  border: none;
+  padding: 5px;
+  border-radius: 3px;
+  min-width: 300px;
+}
+section {
+  display: flex;
+  justify-content: center;
+  min-height: 40px;
 }
